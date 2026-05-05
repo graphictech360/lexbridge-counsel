@@ -1,0 +1,19 @@
+{
+  "name": "LexBridge Counsel",
+  "short_name": "LexBridge",
+  "description": "International legal AI research and chamber workflow demo.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f1e9",
+  "theme_color": "#10213f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

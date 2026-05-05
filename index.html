@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10213f" />
+    <meta
+      name="description"
+      content="LexBridge Counsel is a production-style demo for international legal research, chamber management, citation export, legal drafting, notes, bookmarks, and hearing reminders."
+    />
+    <title>LexBridge Counsel - Legal AI Workspace</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="LexBridge navigation">
+        <a class="brand" href="#dashboard" data-route="dashboard" aria-label="LexBridge Counsel dashboard">
+          <span class="brand-mark">LB</span>
+          <span>
+            <strong>LexBridge</strong>
+            <small>Counsel</small>
+          </span>
+        </a>
+
+        <nav class="side-nav">
+          <button class="nav-item is-active" type="button" data-route="dashboard">Dashboard</button>
+          <button class="nav-item" type="button" data-route="research">AI Research</button>
+          <button class="nav-item" type="button" data-route="cases">Case Library</button>
+          <button class="nav-item" type="button" data-route="statutes">Statutes</button>
+          <button class="nav-item" type="button" data-route="drafting">Drafting</button>
+          <button class="nav-item" type="button" data-route="chamber">Chamber</button>
+          <button class="nav-item" type="button" data-route="notes">Notes</button>
+          <button class="nav-item" type="button" data-route="reminders">Hearings</button>
+          <button class="nav-item" type="button" data-route="bookmarks">Bookmarks</button>
+          <button class="nav-item" type="button" data-route="citations">Citations</button>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="status-dot"></span>
+          <div>
+            <strong>Source-grounded demo</strong>
+            <p>Answers are generated from the curated case and statute library.</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">International legal research workspace</p>
+            <h1 data-page-title>Dashboard</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" type="button" data-open-disclaimer>Disclaimer</button>
+            <button class="primary-button" type="button" data-route="research">Ask Counsel AI</button>
+          </div>
+        </header>
+
+        <section class="mobile-nav" aria-label="Mobile navigation">
+          <button class="nav-item is-active" type="button" data-route="dashboard">Dashboard</button>
+          <button class="nav-item" type="button" data-route="research">Research</button>
+          <button class="nav-item" type="button" data-route="cases">Cases</button>
+          <button class="nav-item" type="button" data-route="statutes">Dhara</button>
+          <button class="nav-item" type="button" data-route="drafting">Drafts</button>
+          <button class="nav-item" type="button" data-route="chamber">Chamber</button>
+        </section>
+
+        <section class="disclaimer-strip" aria-label="Legal disclaimer">
+          <strong>Professional use only.</strong>
+          This demo supports legal research and drafting workflows for lawyers. It is not legal advice,
+          does not create a lawyer-client relationship, and all outputs require qualified lawyer review.
+        </section>
+
+        <section class="view is-active" id="dashboard-view" data-view="dashboard">
+          <div class="hero-grid">
+            <article class="hero-card">
+              <p class="eyebrow">Production-level demo</p>
+              <h2>Legal research, drafting, citations, and chamber operations in one mobile-ready workspace.</h2>
+              <p>
+                Built for Bangladesh, England & Wales, and United States workflows with structured case studies,
+                statute references, lawyer notes, bookmarks, hearing reminders, and citation export.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-button" type="button" data-route="research">Start Research</button>
+                <button class="secondary-button" type="button" data-route="cases">Browse 50 Cases</button>
+              </div>
+            </article>
+
+            <article class="insight-panel">
+              <span class="panel-label">Matter readiness</span>
+              <div class="progress-ring" aria-label="Demo readiness score">
+                <strong>92%</strong>
+                <small>demo coverage</small>
+              </div>
+              <ul class="check-list">
+                <li>3 jurisdictions organized</li>
+                <li>5 practice areas mapped</li>
+                <li>50 curated case studies</li>
+                <li>50+ statute and rule references</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="metric-grid" data-dashboard-metrics></div>
+
+          <div class="content-grid two-column">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Jurisdiction map</p>
+                  <h2>Research coverage</h2>
+                </div>
+              </div>
+              <div class="jurisdiction-grid" data-jurisdiction-summary></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Upcoming</p>
+                  <h2>Hearings and deadlines</h2>
+                </div>
+                <button class="text-button" type="button" data-route="reminders">Manage</button>
+              </div>
+              <div class="compact-list" data-upcoming-reminders></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="research-view" data-view="research">
+          <div class="research-layout">
+            <article class="panel research-card">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Ask with citations</p>
+                  <h2>AI Legal Research</h2>
+                </div>
+                <span class="pill">RAG demo</span>
+              </div>
+
+              <div class="form-grid">
+                <label>
+                  Jurisdiction scope
+                  <select data-research-jurisdiction></select>
+                </label>
+                <label>
+                  Practice area
+                  <select data-research-practice></select>
+                </label>
+                <label>
+                  Answer mode
+                  <select data-research-mode>
+                    <option value="short">Short answer</option>
+                    <option value="memo">Detailed research memo</option>
+                    <option value="compare">Compare jurisdictions</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="scope-note" data-research-scope>
+                Select a jurisdiction to lock answers to that legal system. Choose all jurisdictions only for a grouped comparison.
+              </div>
+
+              <label class="textarea-label">
+                Search term or legal question
+                <textarea
+                  data-research-question
+                  rows="7"
+                  placeholder="Examples: Penal Code section 420, fatal road accident compensation, unlawful arrest safeguards, penalty clause, land eviction"
+                ></textarea>
+              </label>
+
+              <div class="button-row">
+                <button class="primary-button" type="button" data-run-research>Generate Answer</button>
+                <button class="secondary-button" type="button" data-fill-sample-question>Sample Question</button>
+              </div>
+            </article>
+
+            <article class="panel answer-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Output</p>
+                  <h2>Source-grounded answer</h2>
+                </div>
+                <button class="secondary-button header-command" type="button" data-save-answer>Save note</button>
+              </div>
+              <div class="answer-box" data-research-answer>
+                <p class="muted">Ask a question to generate an answer with case references, statute sections, source links, and lawyer notes.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="cases-view" data-view="cases">
+          <div class="library-layout">
+            <article class="panel filter-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Structured library</p>
+                  <h2>Case filters</h2>
+                </div>
+              </div>
+              <label>
+                Search
+                <input type="search" data-case-search placeholder="Search case, issue, court, citation..." />
+              </label>
+              <label>
+                Jurisdiction
+                <select data-case-jurisdiction></select>
+              </label>
+              <label>
+                Practice area
+                <select data-case-practice></select>
+              </label>
+              <label>
+                Court level
+                <select data-case-court>
+                  <option value="all">All courts</option>
+                  <option value="Supreme">Supreme / Appellate</option>
+                  <option value="High">High Court</option>
+                  <option value="Court of Appeal">Court of Appeal</option>
+                  <option value="District">Trial / District</option>
+                </select>
+              </label>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Cases</p>
+                  <h2 data-case-count>50 cases</h2>
+                </div>
+              </div>
+              <div class="case-list" data-case-list></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="statutes-view" data-view="statutes">
+          <div class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Dhara / section finder</p>
+                <h2>Jurisdiction-wise statutes and rules</h2>
+              </div>
+            </div>
+            <div class="statute-controls">
+              <label>
+                Jurisdiction
+                <select data-statute-jurisdiction></select>
+              </label>
+              <label>
+                Practice area
+                <select data-statute-practice></select>
+              </label>
+              <label>
+                Search within selected law
+                <input type="search" data-statute-search placeholder="Search section, Act, rule, topic..." />
+              </label>
+            </div>
+            <div class="statute-board" data-statute-list></div>
+          </div>
+        </section>
+
+        <section class="view" id="drafting-view" data-view="drafting">
+          <div class="drafting-layout">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Legal drafting</p>
+                  <h2>Draft generator</h2>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Template
+                  <select data-draft-template></select>
+                </label>
+                <label>
+                  Jurisdiction
+                  <select data-draft-jurisdiction></select>
+                </label>
+                <label>
+                  Matter / client
+                  <input type="text" data-draft-client placeholder="Client or matter name" />
+                </label>
+                <label>
+                  Opposing party
+                  <input type="text" data-draft-opponent placeholder="Opposing party" />
+                </label>
+              </div>
+              <label class="textarea-label">
+                Key facts
+                <textarea data-draft-facts rows="6" placeholder="Add brief facts, injuries, relief sought, dates, and key documents."></textarea>
+              </label>
+              <div class="button-row">
+                <button class="primary-button" type="button" data-generate-draft>Generate Draft</button>
+                <button class="secondary-button" type="button" data-save-draft>Save Draft</button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Preview</p>
+                  <h2>Draft output</h2>
+                </div>
+                <button class="text-button" type="button" data-copy-draft>Copy</button>
+              </div>
+              <pre class="draft-output" data-draft-output></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="chamber-view" data-view="chamber">
+          <div class="content-grid two-column">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Chamber management</p>
+                  <h2>Open a matter</h2>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Client
+                  <input type="text" data-matter-client placeholder="Client name" />
+                </label>
+                <label>
+                  Matter title
+                  <input type="text" data-matter-title placeholder="Case or file title" />
+                </label>
+                <label>
+                  Jurisdiction
+                  <select data-matter-jurisdiction></select>
+                </label>
+                <label>
+                  Practice area
+                  <select data-matter-practice></select>
+                </label>
+                <label>
+                  Court / forum
+                  <input type="text" data-matter-court placeholder="Court name" />
+                </label>
+                <label>
+                  Fee status
+                  <select data-matter-fee>
+                    <option>Consultation pending</option>
+                    <option>Retainer received</option>
+                    <option>Invoice sent</option>
+                    <option>Paid</option>
+                  </select>
+                </label>
+              </div>
+              <button class="primary-button" type="button" data-add-matter>Add Matter</button>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Active files</p>
+                  <h2>Matters</h2>
+                </div>
+              </div>
+              <div class="matter-list" data-matter-list></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="notes-view" data-view="notes">
+          <div class="content-grid two-column">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Lawyer notes</p>
+                  <h2>Add private note</h2>
+                </div>
+              </div>
+              <label>
+                Tag
+                <input type="text" data-note-tag placeholder="e.g. bail, limitation, evidence" />
+              </label>
+              <label class="textarea-label">
+                Note
+                <textarea data-note-body rows="7" placeholder="Write chamber note, strategy point, evidence issue, or client instruction."></textarea>
+              </label>
+              <button class="primary-button" type="button" data-add-note>Add Note</button>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Saved notes</p>
+                  <h2>Notebook</h2>
+                </div>
+              </div>
+              <div class="note-list" data-note-list></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="reminders-view" data-view="reminders">
+          <div class="content-grid two-column">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Hearing reminders</p>
+                  <h2>Add date</h2>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Matter
+                  <input type="text" data-reminder-matter placeholder="Matter or client" />
+                </label>
+                <label>
+                  Court / forum
+                  <input type="text" data-reminder-court placeholder="Court name" />
+                </label>
+                <label>
+                  Date
+                  <input type="date" data-reminder-date />
+                </label>
+                <label>
+                  Type
+                  <select data-reminder-type>
+                    <option>Hearing</option>
+                    <option>Filing deadline</option>
+                    <option>Client meeting</option>
+                    <option>Limitation review</option>
+                  </select>
+                </label>
+              </div>
+              <button class="primary-button" type="button" data-add-reminder>Add Reminder</button>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Calendar</p>
+                  <h2>Upcoming</h2>
+                </div>
+              </div>
+              <div class="reminder-list" data-reminder-list></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="bookmarks-view" data-view="bookmarks">
+          <div class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Saved authorities</p>
+                <h2>Bookmarks</h2>
+              </div>
+            </div>
+            <div class="case-list" data-bookmark-list></div>
+          </div>
+        </section>
+
+        <section class="view" id="citations-view" data-view="citations">
+          <div class="content-grid two-column">
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Citation export</p>
+                  <h2>Select authorities</h2>
+                </div>
+              </div>
+              <label>
+                Format
+                <select data-citation-format>
+                  <option value="neutral">Neutral / court citation</option>
+                  <option value="oscola">OSCOLA-style</option>
+                  <option value="bluebook">Bluebook-style</option>
+                  <option value="bangladesh">Bangladesh practice note</option>
+                </select>
+              </label>
+              <div class="citation-picker" data-citation-picker></div>
+              <div class="button-row">
+                <button class="primary-button" type="button" data-build-citations>Build Citation List</button>
+                <button class="secondary-button" type="button" data-download-citations>Download .txt</button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Export</p>
+                  <h2>Citation list</h2>
+                </div>
+                <button class="text-button" type="button" data-copy-citations>Copy</button>
+              </div>
+              <pre class="draft-output" data-citation-output></pre>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="modal" data-disclaimer-modal>
+      <div class="modal-card">
+        <p class="eyebrow">Required disclaimer</p>
+        <h2>LexBridge Counsel is a legal workflow demo, not legal advice.</h2>
+        <p>
+          This application is designed for lawyers, law firms, and supervised legal teams. It assists with
+          research organization, drafting, citations, chamber workflow, and reminders. It does not replace
+          professional judgment, does not provide public legal advice, and does not create a lawyer-client
+          relationship.
+        </p>
+        <p>
+          Any AI-style answer must be independently verified against primary sources, local procedural rules,
+          limitation periods, and current law before use in client work, court filings, or advisory opinions.
+        </p>
+        <div class="button-row">
+          <button class="primary-button" type="button" data-accept-disclaimer>I understand</button>
+          <button class="secondary-button" type="button" data-close-disclaimer>Review app</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

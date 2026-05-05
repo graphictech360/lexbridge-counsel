@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="LexBridge Counsel">
+  <rect width="512" height="512" rx="108" fill="#10213f"/>
+  <path d="M126 142h260v45H126zM151 219h210v38H151zM151 289h168v38H151z" fill="#f2d38b"/>
+  <path d="M130 368h252v36H130z" fill="#f8f5ee"/>
+  <path d="M106 118h300v300H106z" fill="none" stroke="#f8f5ee" stroke-width="18"/>
+</svg>
